@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "713480858488",
+    "project_id": "whatsappfirebase-25465",
+    "storage_bucket": "whatsappfirebase-25465.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713480858488:android:f27c0cd19a76987abe768d",
+        "android_client_info": {
+          "package_name": "com.rocpjunior.whatsappfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALo2_iLjxmdzab6TmvdiNt4M4tK_fWjcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
