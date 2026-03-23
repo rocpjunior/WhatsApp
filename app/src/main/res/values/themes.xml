@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.WhatsAppFirebase" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/verdeEscuro</item>
+
     </style>
     <style name="Theme.WhatsAppFirebase" parent="Base.Theme.WhatsAppFirebase" />
 </resources>
