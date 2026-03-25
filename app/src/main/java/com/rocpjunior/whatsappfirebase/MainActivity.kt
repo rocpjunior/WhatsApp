@@ -10,8 +10,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.rocpjunior.whatsappfirebase.adapters.ViewPagerAdapter
 import com.rocpjunior.whatsappfirebase.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +34,22 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         toolbar()
+        navegacaoAbas()
+    }
+
+    private fun navegacaoAbas() {
+        val tabLayout = binding.tabLayoutInicial
+        val viewPager = binding.viewPagerInicial
+
+        val abas = listOf("CONVERSAS", "CONTATOS")
+        viewPager.adapter = ViewPagerAdapter(
+            abas, supportFragmentManager, lifecycle
+        )
+
+        tabLayout.isTabIndicatorFullWidth = true
+        TabLayoutMediator(tabLayout, viewPager) { aba, posicao ->
+            aba.text = abas[posicao]
+        }.attach()
     }
 
     private fun toolbar() {
