@@ -1,4 +1,4 @@
-package com.rocpjunior.whatsappfirebase.utils.model
+package com.rocpjunior.whatsappfirebase.model
 
 data class Usuario(
     var id: String,

@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsAppFirebase">
         <activity
-            android:name=".Cadastro"
-            android:parentActivityName=".Login"
+            android:name=".Perfil"
             android:exported="false" />
+        <activity
+            android:name=".Cadastro"
+            android:exported="false"
+            android:parentActivityName=".Login" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
