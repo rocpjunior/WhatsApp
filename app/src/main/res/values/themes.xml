@@ -10,5 +10,8 @@
         <item name= "tint">@color/white</item>
     </style>
 
+    <style name="Redondo">
+        <item name="cornerSize">50%</item>
+    </style>
     <style name="Theme.WhatsAppFirebase" parent="Base.Theme.WhatsAppFirebase" />
 </resources>

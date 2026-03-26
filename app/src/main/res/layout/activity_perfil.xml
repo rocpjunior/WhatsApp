@@ -7,15 +7,69 @@
     android:layout_height="match_parent"
     tools:context=".Perfil">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HelloWorld"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <include
+        android:id="@+id/includePerfilToolbar"
+        layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgPerfil"
+        app:shapeAppearanceOverlay="@style/Redondo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includePerfilToolbar"
+        app:srcCompat="@drawable/perfil" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabGaleria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:tint="@color/white"
+        app:backgroundTint="@color/verdeEscuro"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/imgPerfil"
+        app:srcCompat="@drawable/ic_galeria" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputNomePerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPerfil">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNomePerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Salvar"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputNomePerfil" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
