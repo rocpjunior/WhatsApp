@@ -27,7 +27,6 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         click()
-        //firebaseAuth.signOut()
     }
 
     override fun onStart() {
