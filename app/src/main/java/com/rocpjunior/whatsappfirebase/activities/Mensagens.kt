@@ -10,6 +10,7 @@ import com.rocpjunior.whatsappfirebase.R
 import com.rocpjunior.whatsappfirebase.databinding.ActivityMensagensBinding
 import com.rocpjunior.whatsappfirebase.model.Usuario
 import com.rocpjunior.whatsappfirebase.utils.Constantes
+import com.squareup.picasso.Picasso
 
 
 class Mensagens : AppCompatActivity() {
@@ -25,6 +26,22 @@ class Mensagens : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         dadosUsuarios()
+        toolbar()
+    }
+
+    private fun toolbar() {
+        val toolbar = binding.toolbarMensagens
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            title = ""
+            if(dadosDestinatario != null) {
+                binding.textNomePerfil.text = dadosDestinatario!!.nome
+                Picasso.get()
+                    .load(dadosDestinatario!!.foto)
+                    .into(binding.imgFotoPerfil)
+            }
+            setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     private fun dadosUsuarios() {

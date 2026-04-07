@@ -21,7 +21,8 @@
         android:theme="@style/Theme.WhatsAppFirebase">
         <activity
             android:name=".activities.Mensagens"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.Perfil"
             android:exported="false"
