@@ -1,4 +1,4 @@
-package com.rocpjunior.whatsappfirebase
+package com.rocpjunior.whatsappfirebase.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.storageMetadata
 import com.rocpjunior.whatsappfirebase.databinding.ActivityPerfilBinding
 import com.rocpjunior.whatsappfirebase.utils.exibirMensagem
 import com.squareup.picasso.Picasso

@@ -1,4 +1,4 @@
-package com.rocpjunior.whatsappfirebase
+package com.rocpjunior.whatsappfirebase.activities
 
 import android.content.Intent
 import android.os.Bundle

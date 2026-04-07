@@ -1,5 +1,6 @@
 package com.rocpjunior.whatsappfirebase.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,9 +13,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.QuerySnapshot
+import com.rocpjunior.whatsappfirebase.activities.Mensagens
 import com.rocpjunior.whatsappfirebase.adapters.ContatosAdapter
 import com.rocpjunior.whatsappfirebase.databinding.FragmentContatosBinding
 import com.rocpjunior.whatsappfirebase.model.Usuario
+import com.rocpjunior.whatsappfirebase.utils.Constantes
 
 
 class ContatosFragment : Fragment() {
@@ -37,7 +40,12 @@ class ContatosFragment : Fragment() {
         binding = FragmentContatosBinding.inflate(
             inflater, container, false
         )
-        contatosAdapter = ContatosAdapter()
+        contatosAdapter = ContatosAdapter{ usuario ->
+            val intent = Intent(context, Mensagens::class.java)
+            intent.putExtra("dados", usuario)
+            intent.putExtra("origem", Constantes.ORIGEM_CONTATO )
+            startActivity(intent)
+        }
         binding.rvContatos.adapter = contatosAdapter
         binding.rvContatos.layoutManager = LinearLayoutManager(context)
         binding.rvContatos.addItemDecoration(

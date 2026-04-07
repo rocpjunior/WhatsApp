@@ -1,4 +1,4 @@
-package com.rocpjunior.whatsappfirebase
+package com.rocpjunior.whatsappfirebase.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.core.view.MenuProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.rocpjunior.whatsappfirebase.R
 import com.rocpjunior.whatsappfirebase.adapters.ViewPagerAdapter
 import com.rocpjunior.whatsappfirebase.databinding.ActivityMainBinding
 

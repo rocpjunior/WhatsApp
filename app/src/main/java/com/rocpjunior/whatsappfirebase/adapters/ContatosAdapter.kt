@@ -8,7 +8,9 @@ import com.rocpjunior.whatsappfirebase.databinding.ItemContatosBinding
 import com.rocpjunior.whatsappfirebase.model.Usuario
 import com.squareup.picasso.Picasso
 
-class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.ContatosViewHolder>() {
+class ContatosAdapter(
+    private val onClick: (Usuario) -> Unit
+): RecyclerView.Adapter<ContatosAdapter.ContatosViewHolder>() {
 
     private var listaContatos = emptyList<Usuario>()
     fun adicionarLista(lista: List<Usuario>){
@@ -28,6 +30,10 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.ContatosViewHolder>(
                     .placeholder(R.drawable.perfil)
                     //.error(R.drawable.perfil)
                     .into(binding.imgContatoFoto)
+
+                    binding.itemContato.setOnClickListener {
+                        onClick(usuario)
+                    }
             } else {
                 binding.imgContatoFoto.setImageResource(R.drawable.perfil)
             }
