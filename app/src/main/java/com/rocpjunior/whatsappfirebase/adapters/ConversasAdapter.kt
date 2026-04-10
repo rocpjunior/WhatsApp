@@ -2,7 +2,6 @@ package com.rocpjunior.whatsappfirebase.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.ViewParent
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.rocpjunior.whatsappfirebase.databinding.ItemMensagemDestinatarioBinding
