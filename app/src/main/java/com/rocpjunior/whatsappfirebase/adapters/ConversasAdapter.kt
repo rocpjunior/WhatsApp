@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rocpjunior.whatsappfirebase.R
-import com.rocpjunior.whatsappfirebase.databinding.ItemContatosBinding
 import com.rocpjunior.whatsappfirebase.databinding.ItemConversasBinding
 import com.rocpjunior.whatsappfirebase.model.Conversa
-import com.rocpjunior.whatsappfirebase.model.Usuario
 import com.squareup.picasso.Picasso
 
 class ConversasAdapter(

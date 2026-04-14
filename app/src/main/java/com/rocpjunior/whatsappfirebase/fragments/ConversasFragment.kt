@@ -11,14 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
 import com.rocpjunior.whatsappfirebase.R
 import com.rocpjunior.whatsappfirebase.activities.Mensagens
-import com.rocpjunior.whatsappfirebase.adapters.ContatosAdapter
 import com.rocpjunior.whatsappfirebase.adapters.ConversasAdapter
 import com.rocpjunior.whatsappfirebase.databinding.FragmentConversasBinding
 import com.rocpjunior.whatsappfirebase.model.Conversa
 import com.rocpjunior.whatsappfirebase.model.Usuario
-import com.rocpjunior.whatsappfirebase.utils.Constantes
 import com.rocpjunior.whatsappfirebase.utils.exibirMensagem
 
 
@@ -80,6 +79,7 @@ class ConversasFragment : Fragment() {
                 .collection("conversas")
                 .document(idRemetente)
                 .collection("ultimas_conversas")
+                .orderBy("data", Query.Direction.DESCENDING)
                 .addSnapshotListener { querySnapshot, error ->
                     if(error != null){
                         activity?.exibirMensagem("Tem alguma coisa de errado com as conversas ;-;")

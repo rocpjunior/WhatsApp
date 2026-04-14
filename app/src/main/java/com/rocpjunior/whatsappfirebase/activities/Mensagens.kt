@@ -183,9 +183,7 @@ class Mensagens : AppCompatActivity() {
                         dadosRemetente = usuario
                     }
                 }
-
         }
-
 
         val extras = intent.extras
         if( extras != null) {

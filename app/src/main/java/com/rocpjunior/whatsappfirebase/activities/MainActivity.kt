@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
-    private val firestore by lazy {
-        FirebaseFirestore.getInstance()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun desconectarUsuario() {
         AlertDialog.Builder(this)
-            .setTitle("Desconectando")
+            .setTitle("Saindo")
             .setMessage("Deseja realmente sair?")
             .setNegativeButton("Não"){dialog, posicao -> }
             .setPositiveButton("Sim"){dialog, posicao ->
