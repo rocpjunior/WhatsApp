@@ -43,7 +43,7 @@ class ContatosFragment : Fragment() {
         contatosAdapter = ContatosAdapter{ usuario ->
             val intent = Intent(context, Mensagens::class.java)
             intent.putExtra("dados", usuario)
-            intent.putExtra("origem", Constantes.ORIGEM_CONTATO )
+            //intent.putExtra("origem", Constantes.ORIGEM_CONTATO )
             startActivity(intent)
         }
         binding.rvContatos.adapter = contatosAdapter

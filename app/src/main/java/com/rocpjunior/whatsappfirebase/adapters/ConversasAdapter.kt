@@ -3,88 +3,60 @@ package com.rocpjunior.whatsappfirebase.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.rocpjunior.whatsappfirebase.databinding.ItemMensagemDestinatarioBinding
-import com.rocpjunior.whatsappfirebase.databinding.ItemMensagemRemetenteBinding
-import com.rocpjunior.whatsappfirebase.model.Mensagem
-import com.rocpjunior.whatsappfirebase.utils.Constantes
+import com.rocpjunior.whatsappfirebase.R
+import com.rocpjunior.whatsappfirebase.databinding.ItemContatosBinding
+import com.rocpjunior.whatsappfirebase.databinding.ItemConversasBinding
+import com.rocpjunior.whatsappfirebase.model.Conversa
+import com.rocpjunior.whatsappfirebase.model.Usuario
+import com.squareup.picasso.Picasso
 
-class ConversasAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ConversasAdapter(
+    private val onClick: (Conversa) -> Unit
+): RecyclerView.Adapter<ConversasAdapter.ConversasViewHolder>() {
 
-    private var listaMensagens = emptyList<Mensagem>()
-    fun adicionarLista (lista: List<Mensagem>){
-        listaMensagens = lista
+    private var listaConversas = emptyList<Conversa>()
+    fun adicionarLista( lista: List<Conversa>){
+        listaConversas = lista
         notifyDataSetChanged()
     }
 
-    class MensagensRemetenteViewHolder(
-        private val binding: ItemMensagemRemetenteBinding
-    ): RecyclerView.ViewHolder(binding.root){
-
-        fun bind(mensagem: Mensagem){
-            binding.textRemetente.text = mensagem.mensagem
-        }
-
-        companion object{
-            fun inflarLayout(parent: ViewGroup): MensagensRemetenteViewHolder {
-                val inflador = LayoutInflater.from(parent.context)
-                val itemView = ItemMensagemRemetenteBinding.inflate(
-                    inflador,
-                    parent,
-                    false
-                )
-                return MensagensRemetenteViewHolder(itemView)
-            }
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConversasViewHolder {
+        val inflador = LayoutInflater.from(parent.context)
+        val itemView = ItemConversasBinding.inflate(
+            inflador, parent, false
+        )
+        return ConversasViewHolder(itemView)
     }
 
-    class MensagensDestinatarioViewHolder(
-        private val binding: ItemMensagemDestinatarioBinding
-    ): RecyclerView.ViewHolder(binding.root){
-
-        fun bind(mensagem: Mensagem){
-            binding.textDestinatario.text = mensagem.mensagem
-        }
-
-        companion object{
-            fun inflarLayout(parent: ViewGroup): MensagensDestinatarioViewHolder {
-                val inflador = LayoutInflater.from(parent.context)
-                val itemView = ItemMensagemDestinatarioBinding.inflate(
-                    inflador,
-                    parent,
-                    false
-                )
-                return MensagensDestinatarioViewHolder(itemView)
-            }
-        }
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        val mensagem =  listaMensagens[position]
-        val idUsuarioLoado = FirebaseAuth.getInstance().currentUser?.uid.toString()
-
-        return if( idUsuarioLoado == mensagem.idUsuario){
-            Constantes.BINARIO_REMETENTE
-        }else{
-            Constantes.BINARIO_DESTINATARIO
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if(viewType == Constantes.BINARIO_REMETENTE)
-            return MensagensRemetenteViewHolder.inflarLayout(parent)
-            return MensagensDestinatarioViewHolder.inflarLayout(parent)
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val mensagem = listaMensagens[position]
-        when(holder){
-            is MensagensRemetenteViewHolder -> holder.bind(mensagem)
-            is MensagensDestinatarioViewHolder -> holder.bind((mensagem))
-        }
+    override fun onBindViewHolder(holder: ConversasViewHolder, position: Int) {
+        val conversa = listaConversas[position]
+        holder.bind(conversa)
     }
 
     override fun getItemCount(): Int {
-        return listaMensagens.size
+        return listaConversas.size
+    }
+
+    inner class ConversasViewHolder(
+        private val binding: ItemConversasBinding
+    ) : RecyclerView.ViewHolder(binding.root){
+
+        fun bind(conversa: Conversa){
+            binding.txtNomeConversa.text = conversa.nome
+            binding.txtMensagemConversa.text = conversa.ultimaMensagem
+            if (conversa.foto.isNotEmpty()) {
+                Picasso.get()
+                    .load(conversa.foto)
+                    .placeholder(R.drawable.perfil)
+                    //.error(R.drawable.perfil)
+                    .into(binding.imgConversa)
+
+                binding.clConversa.setOnClickListener {
+                    onClick(conversa)
+                }
+            } else {
+                binding.imgConversa.setImageResource(R.drawable.perfil)
+            }
+        }
     }
 }

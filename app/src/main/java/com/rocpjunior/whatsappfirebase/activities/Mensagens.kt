@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
-import com.rocpjunior.whatsappfirebase.adapters.ConversasAdapter
+import com.rocpjunior.whatsappfirebase.adapters.MensagensAdapter
 import com.rocpjunior.whatsappfirebase.databinding.ActivityMensagensBinding
 import com.rocpjunior.whatsappfirebase.model.Conversa
 import com.rocpjunior.whatsappfirebase.model.Mensagem
@@ -35,7 +35,7 @@ class Mensagens : AppCompatActivity() {
     }
 
     private lateinit var listenerRegistration: ListenerRegistration
-    private lateinit var conversasAdapter: ConversasAdapter
+    private lateinit var mensagensAdapter: MensagensAdapter
     private var dadosDestinatario: Usuario? = null
     private var dadosRemetente: Usuario? = null
 
@@ -52,8 +52,8 @@ class Mensagens : AppCompatActivity() {
 
     private fun recyclerView() {
         with(binding){
-            conversasAdapter = ConversasAdapter()
-            rvMensagens.adapter = conversasAdapter
+            mensagensAdapter = MensagensAdapter()
+            rvMensagens.adapter = mensagensAdapter
             rvMensagens.layoutManager = LinearLayoutManager(applicationContext)
         }
     }
@@ -89,7 +89,7 @@ class Mensagens : AppCompatActivity() {
                         }
                     }
                     if(listaMensagens.isNotEmpty()){
-                        conversasAdapter.adicionarLista(listaMensagens)
+                        mensagensAdapter.adicionarLista(listaMensagens)
                     }
                 }
         }
@@ -189,16 +189,10 @@ class Mensagens : AppCompatActivity() {
 
         val extras = intent.extras
         if( extras != null) {
-            val origem = extras.getString("origem")
-            if(origem == Constantes.ORIGEM_CONTATO){
-                dadosDestinatario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    extras.getParcelable("dados", Usuario::class.java)
-                } else{
-                    extras.getParcelable("dados")
-                }
-
-            } else if (origem == Constantes.ORIGEM_CONVERSA){
-
+            dadosDestinatario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                extras.getParcelable("dados", Usuario::class.java)
+            } else{
+                extras.getParcelable("dados")
             }
         }
     }
